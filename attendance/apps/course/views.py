@@ -1,3 +1,8 @@
-from django.shortcuts import render
+from django.views.generic import CreateView
 
-# Create your views here.
+from attendance.apps.course.forms import GenerateCodeForm
+
+
+class GenerateCodeView(CreateView):
+    template_name = 'course/code.html'
+    form_class = GenerateCodeForm

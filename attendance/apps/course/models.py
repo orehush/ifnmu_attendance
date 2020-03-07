@@ -66,3 +66,29 @@ class Code(models.Model):
 
     def __str__(self):
         return self.value
+
+
+class Attendance(models.Model):
+    class Meta:
+        verbose_name = 'Присутність студента'
+        verbose_name_plural = 'Журнал відвідуваності'
+
+    group = models.ForeignKey(
+        Group,
+        verbose_name='Група',
+        on_delete=models.CASCADE
+    )
+    user = models.ForeignKey(
+        settings.AUTH_USER_MODEL,
+        verbose_name='Студент',
+        on_delete=models.CASCADE
+    )
+    code = models.ForeignKey(
+        Code,
+        verbose_name='Код верифікації',
+        on_delete=models.CASCADE,
+    )
+    created_at = models.DateTimeField(
+        auto_now_add=True,
+        editable=False,
+    )
