@@ -1,0 +1,4 @@
+.idea
+*.py[cod]
+attendance/settings/local.py
+*.sqlite3
