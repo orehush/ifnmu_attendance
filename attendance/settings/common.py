@@ -31,6 +31,7 @@ DEBUG = False
 
 ALLOWED_HOSTS = []
 
+IS_HEROKU = os.environ.get('IS_HEROKU', False)
 
 # Application definition
 
@@ -130,7 +131,7 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 CODE_VERIFICATION_SECONDS = 120
 
-if os.environ.get('IS_HEROKU', False):
+if IS_HEROKU:
     DATABASES['default'] = dj_database_url.config(
         conn_max_age=600, ssl_require=True
     )

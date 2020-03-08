@@ -25,7 +25,7 @@ urlpatterns = [
     path('select2/', include('django_select2.urls')),
 ]
 
-if settings.DEBUG:
+if settings.DEBUG or settings.IS_HEROKU:
     urlpatterns += static(
         settings.STATIC_URL, document_root=settings.STATIC_ROOT
     )
