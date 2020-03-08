@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'bootstrap4',
+    'django_select2',
 
     'attendance.apps.course',
     'attendance.apps.user',

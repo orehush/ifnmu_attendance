@@ -1,0 +1,25 @@
+{% extends 'course/base.html' %}
+
+{% load bootstrap4 %}
+
+
+{% block title %}Перевірка коду доступу для курсу{% endblock %}
+{% block head %}{{ form.media }}{% endblock %}
+
+{% block content %}
+
+    {% bootstrap_messages %}
+    <p></p>
+    <div class="container">
+        <div class="row">
+            <form action="/course/code/verify" method="post" class="form">
+                {% csrf_token %}
+                {% bootstrap_form form %}
+                {% buttons %}
+                    <button type="submit" class="btn btn-primary">Перевірити код</button>
+                {% endbuttons %}
+            </form>
+        </div>
+    </div>
+
+{% endblock %}

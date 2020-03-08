@@ -39,7 +39,7 @@ class Group(models.Model):
     is_active = models.BooleanField('Активна', default=True)
 
     def __str__(self):
-        return self.name
+        return f'{self.course} - {self.name}'
 
 
 class Code(models.Model):

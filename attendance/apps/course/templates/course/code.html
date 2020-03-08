@@ -4,14 +4,28 @@
 
 
 {% block title %}Генерування коду доступу для курсу{% endblock %}
+{% block head %}{{ form.media }}{% endblock %}
 
 {% block content %}
-    <form action="." method="post" class="form">
-        {% csrf_token %}
-        {% bootstrap_form form %}
-        {% buttons %}
-            <button type="submit" class="btn btn-primary">Submit</button>
-        {% endbuttons %}
-    </form>
+
+    <div class="container">
+        <div class="row">
+            <form action="/course/code/generate" method="post" class="form">
+                {% csrf_token %}
+                {% bootstrap_form form %}
+                {% buttons %}
+                    <button type="submit" class="btn btn-primary">Згенерувати код</button>
+                {% endbuttons %}
+            </form>
+        </div>
+        {% if code %}
+            <div class="row">
+                <h2>{{ code }}</h2>
+            </div>
+            <div class="row">
+                <h4>Дійсний до: {{ code.expired_at|time:"G:i:s" }}</h4>
+            </div>
+        {% endif %}
+    </div>
 
 {% endblock %}
