@@ -29,11 +29,13 @@ SECRET_KEY = 'an%+hm-h7cs3x41resf!@vnh%g*5ljgoiqpbn!yn4h847(4_#v'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
+
 ALLOWED_HOSTS = []
 
 SITE_ID = 1
 
 IS_HEROKU = os.environ.get('IS_HEROKU', False)
+IS_DEV = os.environ.get('IS_DEV', False)
 
 # Application definition
 
@@ -75,6 +77,8 @@ AUTHENTICATION_BACKENDS = (
     # `allauth` specific authentication methods, such as login by e-mail
     'allauth.account.auth_backends.AuthenticationBackend',
 )
+
+LOGIN_URL = '/accounts/login/microsoft/'
 
 ROOT_URLCONF = 'attendance.urls'
 
@@ -151,3 +155,6 @@ if IS_HEROKU:
         conn_max_age=600, ssl_require=True
     )
     django_heroku.settings(locals())
+
+if IS_DEV:
+    DEBUG = True
