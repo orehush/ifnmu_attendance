@@ -78,7 +78,7 @@ AUTHENTICATION_BACKENDS = (
     'allauth.account.auth_backends.AuthenticationBackend',
 )
 
-LOGIN_URL = '/accounts/login/microsoft/'
+LOGIN_URL = '/accounts/microsoft/login/'
 
 ROOT_URLCONF = 'attendance.urls'
 
