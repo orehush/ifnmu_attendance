@@ -156,5 +156,8 @@ if IS_HEROKU:
     )
     django_heroku.settings(locals())
 
+if IS_DEV or IS_HEROKU:
+    EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
 if IS_DEV:
     DEBUG = True
