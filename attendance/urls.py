@@ -23,6 +23,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('course/', include('attendance.apps.course.urls')),
     path('select2/', include('django_select2.urls')),
+    path('accounts/', include('allauth.urls')),
 ]
 
 if settings.DEBUG or settings.IS_HEROKU:
