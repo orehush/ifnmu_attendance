@@ -11,7 +11,7 @@ class Course(models.Model):
         verbose_name = 'Курс'
         verbose_name_plural = 'Курси'
 
-    name = models.CharField('Назва', max_length=250)
+    name = models.CharField('Назва курсу', max_length=250)
     owner = models.ForeignKey(
         settings.AUTH_USER_MODEL,
         verbose_name='Власник курсу',
@@ -92,3 +92,11 @@ class Attendance(models.Model):
         auto_now_add=True,
         editable=False,
     )
+
+    @property
+    def course(self):
+        return self.group.course
+
+    @property
+    def group_name(self):
+        return self.group.name
